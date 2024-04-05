@@ -444,7 +444,8 @@ This summary is just passable, but not very convincing. There is still a lot of 
 
 It could be quite useful to know what kind of issue the customer is writing about. Let’s ask Vertex AI:
 > Before you execute the following code, make sure you have authenticated with GCP and you’ve set your GCP project according to the instructions mentioned in the section about Vertex AI.
-> ```pythonfrom langchain.llms import VertexAI
+> ```python
+> from langchain.llms import VertexAI
 > from langchain import PromptTemplate, LLMChain
 > template = """Given this text, decide what is the issue the customer is concerned about. Valid > categories are these:
 > * product issues

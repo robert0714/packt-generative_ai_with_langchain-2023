@@ -125,6 +125,11 @@ Final Answer: 4 + 4 = 8
 > Finished chain.
 '4 + 4 = 8'
 ```
+See references:
+   * https://platform.openai.com/docs/deprecations/instructgpt-models
+   * https://python.langchain.com/docs/integrations/llms/openai/
+   * https://platform.openai.com/playground/chat
+
 ## Hugging Face
 Hugging Face is a very prominent player in the NLP space and has considerable traction in open-source and hosting solutions.
 
@@ -224,7 +229,7 @@ You can also run these models on hosted resources or services such as Kubernetes
 We’ll have a look here at Hugging Face’s `transformers`, `llama.cpp`, and GPT4All. These tools provide huge power and are full of great functionality too broad to cover in this chapter. Let’s start by showing how we can run a model with the transformers library by Hugging Face.
 
 ## Hugging Face Transformers
-I’ll quickly show the general recipe for setting up and running a pipeline:
+I’ll quickly show [the general recipe](./notebooks/langchain_transformers.ipynb) for setting up and running a pipeline:
 ```python
 from transformers import pipeline
 import torch
@@ -237,6 +242,8 @@ generate_text = pipeline(
 )
 generate_text("In this chapter, we'll discuss first steps with generative AI in Python.")
 ```
+Use CoLab notebook -> https://colab.research.google.com/github/robert0714/packt-generative_ai_with_langchain-2023/blob/main/notebooks/langchain_transformers.ipynb
+
 Running the preceding code will download everything that’s needed for the model such as the tokenizer and model weights from Hugging Face. This model is quite small (355 million parameters) but relatively performant and instruction-tuned for conversations. We can then run a text completion to give us some inspiration for this chapter.
 > I haven’t included `accelerate` in the main requirements, but I’ve included the transformers library. If you don’t have all libraries installed, make sure you execute this command:
 > ```bash
@@ -490,4 +497,6 @@ pip install langchain_decorators
 pip install openai
 pip install streamlit
 pip install faiss-cpu
+pip install huggingface_hub
+pip install transformers langchain accelerate
 ``` 

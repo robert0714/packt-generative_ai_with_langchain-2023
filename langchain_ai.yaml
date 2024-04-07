@@ -7,7 +7,7 @@ dependencies:
   - libffi=3.4.4
   - ncurses=6.4
   - openssl
-  - python=3.10.12
+  - python=3.10.14
   - readline=8.2
   - sqlite=3.41.2
   - tk=8.6.12

@@ -59,7 +59,9 @@ from langchain.llms import FakeLLM
 fake_llm = FakeLLM(responses=["Hello"])
 ```
 
-You can execute this example in either Python directly or in a notebook.
+You can execute [this example in either Python directly or in a notebook](./notebooks/models.ipynb). 
+
+
 
 The fake LLM is only for testing purposes. The LangChain documentation has an example of tool use with LLMs. This is a bit more complex than the previous example but gives a hint of the capabilities we have at our fingertips:
 ```python
@@ -81,7 +83,7 @@ We set up an agent that makes decisions based on the React strategy that we expl
 As you can see, we connect a tool, a **Python Read-Eval-Print Loop (REPL)**, that will be called depending on the output of the LLM. `FakeListLLM` will give two responses (`"Action: Python_REPL\nAction Input: print(2 + 2)"` and `"Final Answer: 4"`) that won’t change based on the input.
 
 We can also observe how the fake LLM output leads to a call to the Python interpreter, which returns 4. Please note that the action must match the name attribute of the tool, PythonREPLTool, which starts like this:
-
+```python
 class PythonREPLTool(BaseTool):
     """A tool for running python code in a REPL."""
     name = "Python_REPL"
@@ -91,7 +93,11 @@ class PythonREPLTool(BaseTool):
         "If you want to see the output of a value, you should print it out "
         "with `print(...)`."
     )
+```    
 As you can see in the preceding code block, the names and descriptions of the tools are passed to the LLM, which then decides an action based on the information provided. The action can be executing a tool or planning.
+
+> Javascript version is https://js.langchain.com/docs/integrations/llms/fake
+> After langchain[docarray]==0.0.325 ,the python version of langchain does not support Fake LLM  .
 
 The output of the Python interpreter is passed to the fake LLM, which ignores the observation and returns `4`. Obviously, if we change the second response to `"Final Answer: 5"`, the output of the agent wouldn’t correspond to the question.
 
@@ -466,3 +472,22 @@ It could be quite useful to know what kind of issue the customer is writing abou
 > ```
 
 We get `product issues` back, which is correct for the long email example that I am using here.
+
+## How to set up the dependencies for this book
+### Conda
+Refer https://python.langchain.com/docs/get_started/quickstart/#installation
+```bash
+conda create -n langchain_ai  python=3.10
+# conda install langchain -c conda-forge
+``` 
+### Pip
+Refer https://github.com/daveebbelaar/langchain-experiments
+```bash
+pip install langchain[docarray]==0.0.324
+pip install langchain-community
+pip install langchain-experimental
+pip install langchain_decorators
+pip install openai
+pip install streamlit
+pip install faiss-cpu
+``` 
